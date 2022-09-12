@@ -1,5 +1,6 @@
 body {
   font-family: Arial, sans-serif;
+  margin-bottom: 30px;
 }
 
 form {
@@ -37,10 +38,11 @@ button {
   background-color: #542b81;
   color: white;
   margin-top: 1rem;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
 }
 
-/* .form-action {
-  width: 100%;
+.form-actions {
   display: flex;
   justify-content: flex-end;
-} */
+}
