@@ -10,7 +10,6 @@ form {
 label,
 input,
 textarea {
-  width: 100%;
   line-height: 2rem;
 }
 
@@ -21,7 +20,7 @@ h2 {
   color: white;
   margin: 0;
   font-weight: 400;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   font-family: Forum, cursive;
 }
 
@@ -33,6 +32,11 @@ img {
 
 h1 {
   font-size: 2.5rem;
+}
+
+.display-col {
+  display: flex;
+  flex-direction: column;
 }
 
 label {
