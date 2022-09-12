@@ -1,0 +1,73 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin-bottom: 30px;
+  background-color: #f0f0f0;
+}
+
+form {
+  padding: 0 2rem;
+}
+
+header {
+  width: 100%;
+}
+
+label,
+input,
+textarea {
+  line-height: 2rem;
+}
+
+input,
+textarea {
+  border-radius: 5px;
+  border-width: 2px;
+  border-color: #cfcfcf;
+  border-style: solid;
+}
+
+h2 {
+  width: 100%;
+  background-color: #542b81;
+  padding: 1rem 2rem;
+  color: white;
+  margin: 0;
+  font-weight: 400;
+  letter-spacing: 1px;
+  font-family: Forum, cursive;
+}
+
+img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+.display-col {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-weight: 600;
+  margin-top: 1rem;
+}
+
+button {
+  background-color: #542b81;
+  color: white;
+  margin-top: 1.5rem;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+}
+
+.form-actions {
+  display: flex;
+  flex-basis: 100%;
+  justify-content: flex-end;
+}
