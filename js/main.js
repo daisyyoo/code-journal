@@ -25,3 +25,16 @@ function newEntry(event) {
 }
 
 $newEntry.addEventListener('submit', newEntry);
+
+window.addEventListener('beforeunload', stringified);
+
+function stringified(event) {
+  var newEntryJSON = JSON.stringify(data.entries);
+  localStorage.setItem('new-entry-storage', newEntryJSON);
+}
+
+var previousEntryJSON = localStorage.getItem('new-entry-storage');
+
+if (previousEntryJSON !== null) {
+  data.entries = JSON.parse(previousEntryJSON);
+}
