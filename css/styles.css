@@ -10,6 +10,7 @@ form {
 
 header {
   width: 100%;
+  background-color: #542b81;
 }
 
 label,
@@ -27,14 +28,23 @@ textarea {
 }
 
 h2 {
-  width: 100%;
-  background-color: #542b81;
   padding: 1rem 2rem;
   color: white;
   margin: 0;
   font-weight: 400;
   letter-spacing: 1px;
   font-family: Forum, cursive;
+}
+
+.header-links {
+  align-items: baseline;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: white;
+  text-decoration: none;
 }
 
 .image {
@@ -92,11 +102,6 @@ ul {
 .image-spacing {
   margin-bottom: 2rem;
 }
-
-/* .content-title-size {
-  font-size: 1.5rem;
-  font-weight: 600;
-} */
 
 .content-size {
   font-size: 1rem;
