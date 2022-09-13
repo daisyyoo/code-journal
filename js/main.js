@@ -35,6 +35,8 @@ function newEntryDomTree(entry) {
 
   var $imgUrl = $div.appendChild(document.createElement('img'));
   $imgUrl.setAttribute('src', entry.photoURL);
+  $imgUrl.setAttribute('class', 'image');
+  $imgUrl.setAttribute('alt', 'insert picture here');
 
   var $content = $list.appendChild(document.createElement('div'));
   $content.setAttribute('class', 'content-size column-half');
@@ -45,14 +47,16 @@ function newEntryDomTree(entry) {
   var $entryContent = $content.appendChild(document.createElement('p'));
   $entryContent.textContent = entry.notes;
 
-  return $div;
+  return $list;
 }
 
 var $unorderedList = document.querySelector('.entries-list');
 
-for (var i = 0; i < data.entries.length; i++) {
-  var newEntryLog = newEntryDomTree(data.entries[i]);
+function handleDomContentLoaded(event) {
+  for (var i = 0; i < data.entries.length; i++) {
+    var newEntryLog = newEntryDomTree(data.entries[i]);
+    $unorderedList.appendChild(newEntryLog);
+  }
 }
-$unorderedList.appendChild(newEntryLog);
 
-document.addEventListener('DOMContentLoaded', newEntryDomTree);
+document.addEventListener('DOMContentLoaded', handleDomContentLoaded);
