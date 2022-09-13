@@ -25,3 +25,21 @@ function newEntry(event) {
 }
 
 $newEntry.addEventListener('submit', newEntry);
+
+// function entryDomTree(tagName, attributes, children) {
+//   // if (!children) {
+//   //   children = [];
+//   // }
+//   var element = document.createElement('li');
+//   for (var key in attributes) {
+//     if (key === 'textContent') {
+//       element.textContent = attributes.textContent;
+//     } else {
+//       element.setAttribute(key, attributes[key]);
+//     }
+//   }
+//   for (var i = 0; i < children.length; i++) {
+//     element.append(children[i]);
+//   }
+//   return element;
+// }
