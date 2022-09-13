@@ -88,9 +88,13 @@ and hide it and show the entries instead */
 
 ul {
   list-style: none;
-  padding: 0 2rem;
   display: flex;
   flex-wrap: wrap;
+  padding: 0;
+}
+
+.all-entries {
+  padding: 0 2rem;
 }
 
 .entry-title-spacing {
