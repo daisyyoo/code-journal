@@ -107,6 +107,12 @@ ul {
   margin-bottom: 2rem;
 }
 
+.entries-test {
+  display: flex;
+  flex-wrap: wrap;
+  flex-basis: 100%;
+}
+
 .content-size {
   font-size: 1rem;
   line-height: 1.5rem;
