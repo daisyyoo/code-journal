@@ -33,12 +33,12 @@
       <form id="create-entry">
         <div class="row">
           <div class="column-full">
-            <h1>New Entry</h1>
+            <h1 class="title-size">New Entry</h1>
           </div>
         </div>
         <div class="row">
           <div class="column-half">
-            <img src="images/placeholder-image-square.jpg" alt="placeholder-image-square">
+            <img src="images/placeholder-image-square.jpg" class="image" alt="placeholder-image-square">
           </div>
           <div class="column-half display-col">
             <label for="title">Title</label>
@@ -67,6 +67,27 @@
           </div>
         </div>
       </form>
+    </div>
+    <div data-view="entries">
+      <div class="row">
+        <ul class="dummy-entry">
+          <li class="title-size entry-title-spacing column-full">
+            Test Entry
+            <button type="submit">NEW</button>
+          </li>
+          <li class="image-spacing column-half">
+            <img src="images/placeholder-image-square.jpg" class="image" alt="placeholder-image-square">
+          </li>
+          <li class="content-size column-half">
+            <h3>Title Name</h3>
+            <p>
+              Text Explanation ContentText Explanation Content
+              Text Explanation Content Text Explanation Content Text Explanation
+              Content Text Explanation Content Text Explanation Content Text
+              Explanation Content </p>
+          </li>
+        </ul>
+      </div>
     </div>
   </main>
   <script src="js/data.js"></script>

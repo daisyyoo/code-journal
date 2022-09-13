@@ -37,15 +37,16 @@ h2 {
   font-family: Forum, cursive;
 }
 
-img {
+.image {
   width: 100%;
   height: 300px;
   object-fit: cover;
   border-radius: 5px;
 }
 
-h1 {
-  font-size: 2.5rem;
+.title-size {
+  font-size: 2rem;
+  font-weight: 600;
 }
 
 .display-col {
@@ -61,7 +62,7 @@ label {
 button {
   background-color: #542b81;
   color: white;
-  margin-top: 1.5rem;
+  margin: 1.5rem 0;
   border-radius: 5px;
   padding: 0.5rem 1rem;
 }
@@ -70,4 +71,38 @@ button {
   display: flex;
   flex-basis: 100%;
   justify-content: flex-end;
+}
+
+/* make data-view entry-form display none when submit button pressed
+and hide it and show the entries instead */
+
+ul {
+  list-style: none;
+  padding: 0 2rem;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.entry-title-spacing {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.image-spacing {
+  margin-bottom: 2rem;
+}
+
+/* .content-title-size {
+  font-size: 1.5rem;
+  font-weight: 600;
+} */
+
+.content-size {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+h3 {
+  margin: 0;
 }
