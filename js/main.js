@@ -26,20 +26,33 @@ function newEntry(event) {
 
 $newEntry.addEventListener('submit', newEntry);
 
-// function entryDomTree(tagName, attributes, children) {
-//   // if (!children) {
-//   //   children = [];
-//   // }
-//   var element = document.createElement('li');
-//   for (var key in attributes) {
-//     if (key === 'textContent') {
-//       element.textContent = attributes.textContent;
-//     } else {
-//       element.setAttribute(key, attributes[key]);
-//     }
-//   }
-//   for (var i = 0; i < children.length; i++) {
-//     element.append(children[i]);
-//   }
-//   return element;
-// }
+function newEntryDomTree(entry) {
+  var $list = document.createElement('li');
+  $list.setAttribute('class', 'entries-test');
+
+  var $div = $list.appendChild(document.createElement('div'));
+  $div.setAttribute('class', 'image-spacing column-half');
+
+  var $imgUrl = $div.appendChild(document.createElement('img'));
+  $imgUrl.setAttribute('src', entry.photoURL);
+
+  var $content = $list.appendChild(document.createElement('div'));
+  $content.setAttribute('class', 'content-size column-half');
+
+  var $entryTitle = $content.appendChild(document.createElement('h3'));
+  $entryTitle.textContent = entry.title;
+
+  var $entryContent = $content.appendChild(document.createElement('p'));
+  $entryContent.textContent = entry.notes;
+
+  return $div;
+}
+
+var $unorderedList = document.querySelector('.entries-list');
+
+for (var i = 0; i < data.entries.length; i++) {
+  var newEntryLog = newEntryDomTree(data.entries[i]);
+}
+$unorderedList.appendChild(newEntryLog);
+
+document.addEventListener('DOMContentLoaded', newEntryDomTree);
