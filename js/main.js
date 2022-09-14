@@ -23,7 +23,6 @@ function newEntry(event) {
   $previewPhoto.setAttribute('src', 'images/placeholder-image-square.jpg');
   $newEntry.reset();
   entryPage(event);
-  newEntryOpen = false;
 }
 
 $newEntry.addEventListener('submit', newEntry);
@@ -64,7 +63,6 @@ function handleDomContentLoaded(event) {
 document.addEventListener('DOMContentLoaded', handleDomContentLoaded);
 
 var $viewElements = document.querySelectorAll('.view');
-var newEntryOpen = true;
 
 var $entriesNav = document.querySelector('a');
 var buttons = document.querySelectorAll('button');
@@ -73,17 +71,29 @@ $entriesNav.addEventListener('click', entryPage);
 $newEntryButton.addEventListener('click', newEntryPage);
 
 function entryPage(event) {
-  if (newEntryOpen === true) {
+  if (data.view === $viewElements[0].getAttribute('data-view')) {
     $viewElements[0].className = 'view hidden';
     $viewElements[1].className = 'view';
-    newEntryOpen = false;
+    data.view = $viewElements[1].getAttribute('data-view');
   }
 }
 
 function newEntryPage(event) {
-  if (newEntryOpen === false) {
+  if (data.view === $viewElements[1].getAttribute('data-view')) {
     $viewElements[0].className = 'view';
     $viewElements[1].className = 'view hidden';
-    newEntryOpen = true;
+    data.view = $viewElements[0].getAttribute('data-view');
   }
 }
+
+function refreshPage(event) {
+  if (data.view === $viewElements[1].getAttribute('data-view')) {
+    $viewElements[0].className = 'view hidden';
+    $viewElements[1].className = 'view ';
+  } else if (data.view === $viewElements[0].getAttribute('data-view')) {
+    $viewElements[0].className = 'view';
+    $viewElements[1].className = 'view hidden';
+  }
+}
+
+document.addEventListener('DOMContentLoaded', refreshPage);
