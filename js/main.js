@@ -17,11 +17,14 @@ function newEntry(event) {
     notes,
     entryId: data.nextEntryId
   };
+
   data.nextEntryId++;
   data.entries.unshift(newEntryObject);
   $previewPhoto.setAttribute('src', 'images/placeholder-image-square.jpg');
   $newEntry.reset();
   entryPage(event);
+  var newEntry = newEntryDomTree(newEntryObject);
+  $unorderedList.prepend(newEntry);
 }
 
 $newEntry.addEventListener('submit', newEntry);
