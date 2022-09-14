@@ -22,7 +22,7 @@ function newEntry(event) {
   data.entries.unshift(newEntryObject);
   $previewPhoto.setAttribute('src', 'images/placeholder-image-square.jpg');
   $newEntry.reset();
-  entryPage(event);
+  switchPage(event);
   var newEntry = newEntryDomTree(newEntryObject);
   $unorderedList.prepend(newEntry);
 }
@@ -69,26 +69,16 @@ var $viewElements = document.querySelectorAll('.view');
 var $entriesNav = document.querySelector('a');
 var buttons = document.querySelectorAll('button');
 var $newEntryButton = buttons[1];
-$entriesNav.addEventListener('click', entryPage);
-$newEntryButton.addEventListener('click', newEntryPage);
+$entriesNav.addEventListener('click', switchPage);
+$newEntryButton.addEventListener('click', switchPage);
 
-function entryPage(event) {
+function switchPage(event) {
   for (var i = 0; i < $viewElements.length; i++) {
-    if (data.view === $viewElements[i].getAttribute('data-view')) {
-      $viewElements[i].className = 'view hidden';
-    } else {
+    var dataView = event.target.getAttribute('data-view');
+    if (dataView === $viewElements[i].getAttribute('data-view')) {
       $viewElements[i].className = 'view';
-    }
-  }
-  currentView(event);
-}
-
-function newEntryPage(event) {
-  for (var i = 0; i < $viewElements.length; i++) {
-    if (data.view === $viewElements[i].getAttribute('data-view')) {
-      $viewElements[i].className = 'view hidden';
     } else {
-      $viewElements[i].className = 'view';
+      $viewElements[i].className = 'view hidden';
     }
   }
   currentView(event);
@@ -105,10 +95,8 @@ function currentView(event) {
 function refreshPage(event) {
   for (var i = 0; i < $viewElements.length; i++) {
     if (data.view === $viewElements[i].getAttribute('data-view')) {
-      $viewElements[i].className = 'view hidden';
       $viewElements[i].className = 'view ';
     } else if (data.view !== $viewElements[i].getAttribute('data-view')) {
-      $viewElements[i].className = 'view';
       $viewElements[i].className = 'view hidden';
     }
   }
