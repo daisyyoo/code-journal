@@ -22,6 +22,8 @@ function newEntry(event) {
   data.entries.unshift(newEntryObject);
   $previewPhoto.setAttribute('src', 'images/placeholder-image-square.jpg');
   $newEntry.reset();
+  entryPage(event);
+  newEntryOpen = false;
 }
 
 $newEntry.addEventListener('submit', newEntry);
