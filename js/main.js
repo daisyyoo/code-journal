@@ -60,3 +60,24 @@ function handleDomContentLoaded(event) {
 }
 
 document.addEventListener('DOMContentLoaded', handleDomContentLoaded);
+
+var $viewElements = document.querySelectorAll('.view');
+var newEntryOpen = true;
+
+var $entriesNav = document.querySelector('a');
+var buttons = document.querySelectorAll('button');
+var $newEntryButton = buttons[1];
+$entriesNav.addEventListener('click', switchPages);
+$newEntryButton.addEventListener('click', switchPages);
+
+function switchPages(event) {
+  if (newEntryOpen === true) {
+    $viewElements[0].className = 'view hidden';
+    $viewElements[1].className = 'view';
+    newEntryOpen = false;
+  } else {
+    $viewElements[0].className = 'view';
+    $viewElements[1].className = 'view hidden';
+    newEntryOpen = true;
+  }
+}

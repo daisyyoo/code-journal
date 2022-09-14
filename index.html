@@ -28,7 +28,7 @@
               <h2>Code Journal</h2>
             </li>
             <li class="entries-link">
-              <a href="#">Entries</a>
+              <a href="#entries">Entries</a>
             </li>
           </ul>
         </nav>
@@ -36,8 +36,8 @@
     </div>
   </header>
   <main class="container">
-    <div data-view="entry-form">
-      <form id="create-entry">
+    <div class="view" data-view="entry-form">
+      <form>
         <div class="row">
           <div class="column-full">
             <h1 class="title-size">New Entry</h1>
@@ -75,29 +75,16 @@
         </div>
       </form>
     </div>
-    <div data-view="entries">
-      <div class="all-entries">
+    <div class="view hidden" data-view="entries" id="entries">
+      <div class="entries-container">
         <div class="row">
           <div class="entry-title-spacing column-full">
-            <h1>Test Entry</h1>
-            <button type="submit">NEW</button>
+            <h1>Entries</h1>
+            <button type="button">NEW</button>
           </div>
         </div>
         <div class="row">
           <ul class="entries-list">
-            <!-- <li class="entries-test">
-              <div class="image-spacing column-half">
-                <img src="images/placeholder-image-square.jpg" class="image" alt="placeholder-image-square">
-              </div>
-              <div class="content-size column-half">
-                <h3>Title Name</h3>
-                <p>
-                  Text Explanation ContentText Explanation Content
-                  Text Explanation Content Text Explanation Content Text Explanation
-                  Content Text Explanation Content Text Explanation Content Text
-                  Explanation Content </p>
-              </div>
-            </li> -->
           </ul>
         </div>
       </div>

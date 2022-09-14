@@ -83,9 +83,6 @@ button {
   justify-content: flex-end;
 }
 
-/* make data-view entry-form display none when submit button pressed
-and hide it and show the entries instead */
-
 ul {
   list-style: none;
   display: flex;
@@ -93,7 +90,7 @@ ul {
   padding: 0;
 }
 
-.all-entries {
+.entries-container {
   padding: 0 2rem;
 }
 
