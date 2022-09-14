@@ -8,7 +8,6 @@ function photoURLBox(event) {
 }
 
 function newEntry(event) {
-  event.preventDefault();
   var title = $newEntry.elements.title.value;
   var photoURL = $newEntry.elements.photo.value;
   var notes = $newEntry.elements.notes.value;
