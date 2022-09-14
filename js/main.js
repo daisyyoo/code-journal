@@ -67,15 +67,19 @@ var newEntryOpen = true;
 var $entriesNav = document.querySelector('a');
 var buttons = document.querySelectorAll('button');
 var $newEntryButton = buttons[1];
-$entriesNav.addEventListener('click', switchPages);
-$newEntryButton.addEventListener('click', switchPages);
+$entriesNav.addEventListener('click', entryPage);
+$newEntryButton.addEventListener('click', newEntryPage);
 
-function switchPages(event) {
+function entryPage(event) {
   if (newEntryOpen === true) {
     $viewElements[0].className = 'view hidden';
     $viewElements[1].className = 'view';
     newEntryOpen = false;
-  } else {
+  }
+}
+
+function newEntryPage(event) {
+  if (newEntryOpen === false) {
     $viewElements[0].className = 'view';
     $viewElements[1].className = 'view hidden';
     newEntryOpen = true;
