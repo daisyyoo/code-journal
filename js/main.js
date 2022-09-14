@@ -73,28 +73,44 @@ $entriesNav.addEventListener('click', entryPage);
 $newEntryButton.addEventListener('click', newEntryPage);
 
 function entryPage(event) {
-  if (data.view === $viewElements[0].getAttribute('data-view')) {
-    $viewElements[0].className = 'view hidden';
-    $viewElements[1].className = 'view';
-    data.view = $viewElements[1].getAttribute('data-view');
+  for (var i = 0; i < $viewElements.length; i++) {
+    if (data.view === $viewElements[i].getAttribute('data-view')) {
+      $viewElements[i].className = 'view hidden';
+    } else {
+      $viewElements[i].className = 'view';
+    }
   }
+  currentView(event);
 }
 
 function newEntryPage(event) {
-  if (data.view === $viewElements[1].getAttribute('data-view')) {
-    $viewElements[0].className = 'view';
-    $viewElements[1].className = 'view hidden';
-    data.view = $viewElements[0].getAttribute('data-view');
+  for (var i = 0; i < $viewElements.length; i++) {
+    if (data.view === $viewElements[i].getAttribute('data-view')) {
+      $viewElements[i].className = 'view hidden';
+    } else {
+      $viewElements[i].className = 'view';
+    }
+  }
+  currentView(event);
+}
+
+function currentView(event) {
+  for (var i = 0; i < $viewElements.length; i++) {
+    if ($viewElements[i].className === 'view') {
+      data.view = $viewElements[i].getAttribute('data-view');
+    }
   }
 }
 
 function refreshPage(event) {
-  if (data.view === $viewElements[1].getAttribute('data-view')) {
-    $viewElements[0].className = 'view hidden';
-    $viewElements[1].className = 'view ';
-  } else if (data.view === $viewElements[0].getAttribute('data-view')) {
-    $viewElements[0].className = 'view';
-    $viewElements[1].className = 'view hidden';
+  for (var i = 0; i < $viewElements.length; i++) {
+    if (data.view === $viewElements[i].getAttribute('data-view')) {
+      $viewElements[i].className = 'view hidden';
+      $viewElements[i].className = 'view ';
+    } else if (data.view !== $viewElements[i].getAttribute('data-view')) {
+      $viewElements[i].className = 'view';
+      $viewElements[i].className = 'view hidden';
+    }
   }
 }
 
