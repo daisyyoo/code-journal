@@ -17,5 +17,5 @@ function stringified(event) {
 var previousEntryJSON = localStorage.getItem('new-entry-storage');
 
 if (previousEntryJSON !== null) {
-  data.entries = JSON.parse(previousEntryJSON);
+  data = JSON.parse(previousEntryJSON);
 }

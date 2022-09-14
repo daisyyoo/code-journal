@@ -10,6 +10,7 @@ form {
 
 header {
   width: 100%;
+  background-color: #542b81;
 }
 
 label,
@@ -27,8 +28,6 @@ textarea {
 }
 
 h2 {
-  width: 100%;
-  background-color: #542b81;
   padding: 1rem 2rem;
   color: white;
   margin: 0;
@@ -37,15 +36,27 @@ h2 {
   font-family: Forum, cursive;
 }
 
-img {
+.header-links {
+  align-items: baseline;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+.image {
   width: 100%;
   height: 300px;
   object-fit: cover;
   border-radius: 5px;
 }
 
-h1 {
-  font-size: 2.5rem;
+.title-size {
+  font-size: 2rem;
+  font-weight: 600;
 }
 
 .display-col {
@@ -61,7 +72,7 @@ label {
 button {
   background-color: #542b81;
   color: white;
-  margin-top: 1.5rem;
+  margin: 1.5rem 0;
   border-radius: 5px;
   padding: 0.5rem 1rem;
 }
@@ -70,4 +81,45 @@ button {
   display: flex;
   flex-basis: 100%;
   justify-content: flex-end;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+}
+
+.entries-container {
+  padding: 0 2rem;
+}
+
+.entry-title-spacing {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.image-spacing {
+  margin-bottom: 2rem;
+}
+
+.entries-test {
+  display: flex;
+  flex-wrap: wrap;
+  flex-basis: 100%;
+}
+
+.content-size {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+h3 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+p {
+  margin-bottom: 4rem;
 }

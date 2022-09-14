@@ -22,23 +22,30 @@
   <header>
     <div class="container">
       <div class="row">
-        <div class="header column-full">
-          <h2>Code Journal</h2>
-        </div>
+        <nav class="header column-full">
+          <ul class="header-links">
+            <li>
+              <h2>Code Journal</h2>
+            </li>
+            <li class="entries-link">
+              <a href="#header" data-view="entries">Entries</a>
+            </li>
+          </ul>
+        </nav>
       </div>
     </div>
   </header>
   <main class="container">
-    <div data-view="entry-form">
-      <form id="create-entry">
+    <div class="view" data-view="entry-form">
+      <form>
         <div class="row">
           <div class="column-full">
-            <h1>New Entry</h1>
+            <h1 class="title-size">New Entry</h1>
           </div>
         </div>
         <div class="row">
           <div class="column-half">
-            <img src="images/placeholder-image-square.jpg" alt="placeholder-image-square">
+            <img src="images/placeholder-image-square.jpg" class="image" alt="placeholder-image-square">
           </div>
           <div class="column-half display-col">
             <label for="title">Title</label>
@@ -67,6 +74,20 @@
           </div>
         </div>
       </form>
+    </div>
+    <div class="view hidden" data-view="entries" id="entries">
+      <div class="entries-container">
+        <div class="row">
+          <div class="entry-title-spacing column-full">
+            <h1>Entries</h1>
+            <button type="button" data-view="entry-form">NEW</button>
+          </div>
+        </div>
+        <div class="row">
+          <ul class="entries-list">
+          </ul>
+        </div>
+      </div>
     </div>
   </main>
   <script src="js/data.js"></script>
