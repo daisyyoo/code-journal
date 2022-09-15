@@ -74,7 +74,7 @@ $newEntryButton.addEventListener('click', switchPage);
 
 function switchPage(event) {
   for (var i = 0; i < $viewElements.length; i++) {
-    var dataView = event.target.getAttribute('data-view');
+    var dataView = $viewElements[i].getAttribute('data-view');
     if (dataView === $viewElements[i].getAttribute('data-view')) {
       $viewElements[i].className = 'view';
     } else {
