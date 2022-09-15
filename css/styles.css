@@ -100,11 +100,17 @@ ul {
   align-items: center;
 }
 
-.image-spacing {
-  margin-bottom: 2rem;
+.entry-header {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
 }
 
-.entries-test {
+.image-spacing {
+  margin-bottom: 1rem;
+}
+
+.entry-post {
   display: flex;
   flex-wrap: wrap;
   flex-basis: 100%;
