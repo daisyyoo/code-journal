@@ -235,7 +235,7 @@ function showEntryForm(event) {
     for (var i = 0; i < allEntries.length; i++) {
       if (data.editing === allEntries[i].getAttribute('data-entry-id')) {
         var $currentLi = allEntries[i];
-        $currentLi.setAttribute('class', 'hidden');
+        $currentLi.remove();
       }
     }
 
