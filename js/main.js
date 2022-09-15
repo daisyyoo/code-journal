@@ -114,7 +114,7 @@ var $viewElements = document.querySelectorAll('.view');
 var $entriesNav = document.querySelector('a');
 var buttons = document.querySelectorAll('button');
 var $newEntryButton = buttons[1];
-$entriesNav.addEventListener('click', switchPage);
+$entriesNav.addEventListener('click', entriesPage);
 $newEntryButton.addEventListener('click', switchPage);
 
 function switchPage(event) {
@@ -122,6 +122,17 @@ function switchPage(event) {
   for (var i = 0; i < $viewElements.length; i++) {
     if ($viewElements[i].className === 'view') {
       data.view = $viewElements[i].getAttribute('data-view');
+    }
+  }
+}
+
+function entriesPage(event) {
+  if (event.target === $entriesNav && data.view !== 'entries') {
+    whichPage(data.view);
+    for (var i = 0; i < $viewElements.length; i++) {
+      if ($viewElements[i].className === 'view') {
+        data.view = $viewElements[i].getAttribute('data-view');
+      }
     }
   }
 }
