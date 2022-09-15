@@ -53,6 +53,7 @@ function newEntryDomTree(entry) {
 
   var $editPencil = $entryTitleRow.appendChild(document.createElement('i'));
   $editPencil.setAttribute('class', 'fa-solid fa-pencil');
+  $editPencil.setAttribute('data-view', 'entry-form');
 
   var $entryContent = $content.appendChild(document.createElement('p'));
   $entryContent.textContent = entry.notes;
@@ -80,12 +81,12 @@ $entriesNav.addEventListener('click', switchPage);
 $newEntryButton.addEventListener('click', switchPage);
 
 function switchPage(event) {
+  whichPage(data.view);
   for (var i = 0; i < $viewElements.length; i++) {
     if ($viewElements[i].className === 'view') {
       data.view = $viewElements[i].getAttribute('data-view');
     }
   }
-  whichPage(data.view);
 }
 
 function whichPage(name) {
@@ -109,3 +110,14 @@ function refreshPage(event) {
 }
 
 document.addEventListener('DOMContentLoaded', refreshPage);
+
+$unorderedList.addEventListener('click', showEntryForm);
+
+function showEntryForm(event) {
+  switchPage(event);
+
+  var $editHeader = document.querySelector('h1');
+  $editHeader.textContent = 'Edit Entry';
+
+  data.editing = event.target.getAttribute('data-entry-id');
+}
