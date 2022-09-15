@@ -44,8 +44,14 @@ function newEntryDomTree(entry) {
   var $content = $list.appendChild(document.createElement('div'));
   $content.setAttribute('class', 'content-size column-half');
 
-  var $entryTitle = $content.appendChild(document.createElement('h3'));
+  var $entryTitleRow = $content.appendChild(document.createElement('div'));
+  $entryTitleRow.setAttribute('class', 'entry-header');
+
+  var $entryTitle = $entryTitleRow.appendChild(document.createElement('h3'));
   $entryTitle.textContent = entry.title;
+
+  var $editPencil = $entryTitleRow.appendChild(document.createElement('i'));
+  $editPencil.setAttribute('class', 'fa-solid fa-pencil');
 
   var $entryContent = $content.appendChild(document.createElement('p'));
   $entryContent.textContent = entry.notes;
