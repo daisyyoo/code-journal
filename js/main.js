@@ -16,9 +16,7 @@ function newEntry(event) {
   var photoURL = $entry.elements.photo.value;
   var notes = $entry.elements.notes.value;
 
-  var $header = document.querySelector('h1');
-
-  if ($header.textContent === 'New Entry') {
+  if (data.editing === null) {
     // make new entry
     var newEntryObject = {
       title,
