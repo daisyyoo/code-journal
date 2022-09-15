@@ -1,16 +1,20 @@
-var $newEntry = document.querySelector('form');
+var $entry = document.querySelector('form');
 var $previewPhoto = document.querySelector('img');
 var $photoURL = document.querySelector('#photo');
 $photoURL.addEventListener('input', photoURLBox);
 
+// preview photo in box
+
 function photoURLBox(event) {
-  $previewPhoto.setAttribute('src', $newEntry.elements.photo.value);
+  $previewPhoto.setAttribute('src', $entry.elements.photo.value);
 }
 
+// submit new entry and load into entry page
+
 function newEntry(event) {
-  var title = $newEntry.elements.title.value;
-  var photoURL = $newEntry.elements.photo.value;
-  var notes = $newEntry.elements.notes.value;
+  var title = $entry.elements.title.value;
+  var photoURL = $entry.elements.photo.value;
+  var notes = $entry.elements.notes.value;
   var newEntryObject = {
     title,
     photoURL,
@@ -21,17 +25,19 @@ function newEntry(event) {
   data.nextEntryId++;
   data.entries.unshift(newEntryObject);
   $previewPhoto.setAttribute('src', 'images/placeholder-image-square.jpg');
-  $newEntry.reset();
+  $entry.reset();
   switchPage(event);
   var newEntry = newEntryDomTree(newEntryObject);
   $unorderedList.prepend(newEntry);
 }
 
-$newEntry.addEventListener('submit', newEntry);
+$entry.addEventListener('submit', newEntry);
+
+// make new dom tree per entry
 
 function newEntryDomTree(entry) {
   var $list = document.createElement('li');
-  $list.setAttribute('class', 'entries-test');
+  $list.setAttribute('class', 'entry-post');
   $list.setAttribute('data-entry-id', entry.entryId);
 
   var $div = $list.appendChild(document.createElement('div'));
@@ -61,6 +67,8 @@ function newEntryDomTree(entry) {
   return $list;
 }
 
+// load entry list on page
+
 var $unorderedList = document.querySelector('.entries-list');
 
 function handleDomContentLoaded(event) {
@@ -72,8 +80,9 @@ function handleDomContentLoaded(event) {
 
 document.addEventListener('DOMContentLoaded', handleDomContentLoaded);
 
-var $viewElements = document.querySelectorAll('.view');
+// make all buttons work
 
+var $viewElements = document.querySelectorAll('.view');
 var $entriesNav = document.querySelector('a');
 var buttons = document.querySelectorAll('button');
 var $newEntryButton = buttons[1];
@@ -111,6 +120,8 @@ function refreshPage(event) {
 
 document.addEventListener('DOMContentLoaded', refreshPage);
 
+// show edit page
+
 $unorderedList.addEventListener('click', showEntryForm);
 
 function showEntryForm(event) {
@@ -119,5 +130,26 @@ function showEntryForm(event) {
   var $editHeader = document.querySelector('h1');
   $editHeader.textContent = 'Edit Entry';
 
-  data.editing = event.target.getAttribute('data-entry-id');
+  var currentEntry = event.target.closest('.entry-post');
+  data.editing = currentEntry.getAttribute('data-entry-id');
+  var allEntries = document.querySelectorAll('li');
+
+  for (var i = 0; i < allEntries.length; i++) {
+    if (data.editing === allEntries[i].getAttribute('data-entry-id')) {
+      var $currentLi = allEntries[i];
+      var $titleContent = $currentLi.querySelector('h3');
+      var $imageContent = $currentLi.querySelector('img');
+      var $mainContent = $currentLi.querySelector('p');
+
+      $entry.elements.title.value = $titleContent.textContent;
+      $entry.elements.photo.value = $imageContent.getAttribute('src');
+      $entry.elements.notes.value = $mainContent.textContent;
+      $previewPhoto.setAttribute('src', $imageContent.getAttribute('src'));
+      // var editingEntry = {
+      //   title,
+      //   photoURL,
+      //   notes,
+      //   entryId: data.nextEntryId
+    }
+  }
 }
