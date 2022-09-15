@@ -103,10 +103,11 @@ ul {
 .entry-header {
   display: flex;
   justify-content: space-between;
+  margin-top: 1rem;
 }
 
 .image-spacing {
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .entries-test {

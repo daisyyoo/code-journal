@@ -32,6 +32,7 @@ $newEntry.addEventListener('submit', newEntry);
 function newEntryDomTree(entry) {
   var $list = document.createElement('li');
   $list.setAttribute('class', 'entries-test');
+  $list.setAttribute('data-entry-id', entry.entryId);
 
   var $div = $list.appendChild(document.createElement('div'));
   $div.setAttribute('class', 'image-spacing column-half');
