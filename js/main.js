@@ -176,6 +176,7 @@ function showEntryForm(event) {
     }
   }
 
+  // delete button in edit page
   var $deleteButtonRow = document.querySelector('.form-actions');
   var $deleteModalButton = document.createElement('button');
   $deleteButtonRow.prepend($deleteModalButton);
@@ -184,6 +185,7 @@ function showEntryForm(event) {
   $deleteModalButton.textContent = 'Delete Entry';
   $deleteButtonRow.setAttribute('class', 'form-actions-edit column-full');
 
+  // delete button hovering
   $deleteModalButton.addEventListener('mouseover', mouseoverModal);
   $deleteModalButton.addEventListener('mouseout', mouseoutModal);
 
@@ -195,12 +197,13 @@ function showEntryForm(event) {
     $deleteModalButton.className = 'modal';
   }
 
-  $deleteModalButton.addEventListener('click', deleteModal);
+  // show modal
+  $deleteModalButton.addEventListener('click', showModal);
 
   var deleteModalShowing = false;
+  var $modalBackground = document.querySelector('.modal-background');
 
-  function deleteModal(event) {
-    var $modalBackground = document.querySelector('.modal-background');
+  function showModal(event) {
     if (deleteModalShowing === true) {
       $modalBackground.className = 'modal-background hidden';
       deleteModalShowing = false;
@@ -210,4 +213,27 @@ function showEntryForm(event) {
     }
   }
 
+  // cancel and confirm button functions
+  var $cancelButton = document.querySelector('.cancel-button');
+  var $confirmButton = document.querySelector('.confirm-button');
+
+  $cancelButton.addEventListener('click', showModal);
+  $confirmButton.addEventListener('click', confirmButton);
+
+  function confirmButton(event) {
+    for (var i = 0; i < allEntries.length; i++) {
+      if (data.editing === allEntries[i].getAttribute('data-entry-id')) {
+        var $currentLi = allEntries[i];
+        $currentLi.setAttribute('class', 'hidden');
+      }
+    }
+
+    for (var j = 0; j < data.entries.length; j++) {
+      if (data.editing === data.entries[j].entryId.toString()) {
+        data.entries.splice(j, 1);
+      }
+    }
+    showModal(event);
+    switchPage(event);
+  }
 }

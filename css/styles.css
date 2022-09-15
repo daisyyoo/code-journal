@@ -27,6 +27,15 @@ textarea {
   border-style: solid;
 }
 
+input:focus,
+textarea:focus {
+  outline-color: #542b81;
+}
+
+i {
+  color: #542b81;
+}
+
 h2 {
   padding: 1rem 2rem;
   color: white;
@@ -115,6 +124,10 @@ ul {
   padding: 0;
 }
 
+.entries-list {
+  margin: 0;
+}
+
 .entries-container {
   padding: 0 2rem;
 }
@@ -160,7 +173,7 @@ p {
   height: 100vh;
   top: 0;
   position: fixed;
-  background-color: #323232;
+  background-color: rgb(50, 50, 50, 0.8);
   display: flex;
   justify-content: center;
   align-items: center;
