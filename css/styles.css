@@ -100,9 +100,9 @@ button {
 
 .modal-hovered {
   background-color: #f0f0f0;
-  color: #d46956;
-  text-decoration: underline;
+  color: #ec3514;
   font-weight: 600;
+  text-decoration: underline;
   border: none;
   padding: 0;
   border-radius: 0;
@@ -153,4 +153,46 @@ h3 {
 
 p {
   margin-bottom: 4rem;
+}
+
+.modal-background {
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  position: fixed;
+  background-color: #323232;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  padding: 2rem;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.modal-header {
+  font-size: 1.25rem;
+  font-weight: 400;
+  margin-top: 1.25rem;
+}
+
+.modal-buttons-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cancel-button {
+  background-color: rgb(187, 186, 186);
+  color: black;
+  margin-bottom: 0;
+  border: none;
+}
+
+.confirm-button {
+  background-color: #ec3514;
+  color: white;
+  margin-bottom: 0;
+  border: none;
 }

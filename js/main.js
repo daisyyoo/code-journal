@@ -197,8 +197,17 @@ function showEntryForm(event) {
 
   $deleteModalButton.addEventListener('click', deleteModal);
 
-  function deleteModal(event) {
+  var deleteModalShowing = false;
 
+  function deleteModal(event) {
+    var $modalBackground = document.querySelector('.modal-background');
+    if (deleteModalShowing === true) {
+      $modalBackground.className = 'modal-background hidden';
+      deleteModalShowing = false;
+    } else {
+      $modalBackground.className = 'modal-background';
+      deleteModalShowing = true;
+    }
   }
 
 }
