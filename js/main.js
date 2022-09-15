@@ -15,20 +15,51 @@ function newEntry(event) {
   var title = $entry.elements.title.value;
   var photoURL = $entry.elements.photo.value;
   var notes = $entry.elements.notes.value;
-  var newEntryObject = {
-    title,
-    photoURL,
-    notes,
-    entryId: data.nextEntryId
-  };
 
-  data.nextEntryId++;
-  data.entries.unshift(newEntryObject);
-  $previewPhoto.setAttribute('src', 'images/placeholder-image-square.jpg');
+  var $header = document.querySelector('h1');
+
+  if ($header.textContent === 'New Entry') {
+    // make new entry
+    var newEntryObject = {
+      title,
+      photoURL,
+      notes,
+      entryId: data.nextEntryId
+    };
+    data.nextEntryId++;
+    data.entries.unshift(newEntryObject);
+    var newEntry = newEntryDomTree(newEntryObject);
+    $unorderedList.prepend(newEntry);
+
+  } else {
+    // update entry
+    var editedEntryObject = {
+      title,
+      photoURL,
+      notes,
+      entryId: data.editing
+    };
+
+    var allEntries = document.querySelectorAll('li');
+    for (var i = 0; i < allEntries.length; i++) {
+      if (data.editing === allEntries[i].getAttribute('data-entry-id')) {
+        var $findLi = allEntries[i];
+        var editedEntry = newEntryDomTree(editedEntryObject);
+        $findLi.replaceWith(editedEntry);
+      }
+    }
+
+    for (var j = 0; j < data.entries.length; j++) {
+      if (data.editing === data.entries[i].entryId) {
+        // wondering if this isn't working because data.editing is a string and entryId is a number
+        data.entries.splice(j, 1, editedEntryObject);
+      }
+    }
+    data.editing = null;
+  }
   $entry.reset();
+  $previewPhoto.setAttribute('src', 'images/placeholder-image-square.jpg');
   switchPage(event);
-  var newEntry = newEntryDomTree(newEntryObject);
-  $unorderedList.prepend(newEntry);
 }
 
 $entry.addEventListener('submit', newEntry);
@@ -145,11 +176,6 @@ function showEntryForm(event) {
       $entry.elements.photo.value = $imageContent.getAttribute('src');
       $entry.elements.notes.value = $mainContent.textContent;
       $previewPhoto.setAttribute('src', $imageContent.getAttribute('src'));
-      // var editingEntry = {
-      //   title,
-      //   photoURL,
-      //   notes,
-      //   entryId: data.nextEntryId
     }
   }
 }
