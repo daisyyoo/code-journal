@@ -53,13 +53,15 @@
                 required
                 name="title"
                 type="text"
-                id="title">
+                id="title"
+                class="border">
             <label for="photo">Photo URL</label>
             <input
                 required
                 name="photo"
                 type="url"
-                id="photo">
+                id="photo"
+                class="border">
           </div>
           <div class="column-full display-col">
             <label for="notes">Notes</label>
@@ -67,7 +69,8 @@
               required
               rows="6"
               name="notes"
-              id="notes"></textarea>
+              id="notes"
+              class="border"></textarea>
           </div>
           <div class="form-actions column-full">
             <button type="submit" data-view="entries">SAVE</button>
@@ -90,9 +93,18 @@
       </div>
     </div>
   </main>
+  <div class="modal-background hidden">
+    <div class="modal-content">
+      <h4 class="modal-header">
+        Are you sure you want to delete this entry?
+      </h4>
+      <div class="modal-buttons-row">
+        <button type="button" class="cancel-button">CANCEL</button>
+        <button type="button" class="confirm-button">CONFIRM</button>
+      </div>
+    </div>
+  </div>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
-
-<!-- //<i class="fa-solid fa-pencil"></i> -->

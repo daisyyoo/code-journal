@@ -114,7 +114,7 @@ var $viewElements = document.querySelectorAll('.view');
 var $entriesNav = document.querySelector('a');
 var buttons = document.querySelectorAll('button');
 var $newEntryButton = buttons[1];
-$entriesNav.addEventListener('click', switchPage);
+$entriesNav.addEventListener('click', entriesPage);
 $newEntryButton.addEventListener('click', switchPage);
 
 function switchPage(event) {
@@ -122,6 +122,17 @@ function switchPage(event) {
   for (var i = 0; i < $viewElements.length; i++) {
     if ($viewElements[i].className === 'view') {
       data.view = $viewElements[i].getAttribute('data-view');
+    }
+  }
+}
+
+function entriesPage(event) {
+  if (event.target === $entriesNav && data.view !== 'entries') {
+    whichPage(data.view);
+    for (var i = 0; i < $viewElements.length; i++) {
+      if ($viewElements[i].className === 'view') {
+        data.view = $viewElements[i].getAttribute('data-view');
+      }
     }
   }
 }
@@ -174,5 +185,66 @@ function showEntryForm(event) {
       $entry.elements.notes.value = $mainContent.textContent;
       $previewPhoto.setAttribute('src', $imageContent.getAttribute('src'));
     }
+  }
+
+  // delete button in edit page
+  var $deleteButtonRow = document.querySelector('.form-actions');
+  var $deleteModalButton = document.createElement('button');
+  $deleteButtonRow.prepend($deleteModalButton);
+  $deleteModalButton.setAttribute('type', 'button');
+  $deleteModalButton.setAttribute('class', 'modal');
+  $deleteModalButton.textContent = 'Delete Entry';
+  $deleteButtonRow.setAttribute('class', 'form-actions-edit column-full');
+
+  // delete button hovering
+  $deleteModalButton.addEventListener('mouseover', mouseoverModal);
+  $deleteModalButton.addEventListener('mouseout', mouseoutModal);
+
+  function mouseoverModal(event) {
+    $deleteModalButton.className = 'modal-hovered';
+  }
+
+  function mouseoutModal(event) {
+    $deleteModalButton.className = 'modal';
+  }
+
+  // show modal
+  $deleteModalButton.addEventListener('click', showModal);
+
+  var deleteModalShowing = false;
+  var $modalBackground = document.querySelector('.modal-background');
+
+  function showModal(event) {
+    if (deleteModalShowing === true) {
+      $modalBackground.className = 'modal-background hidden';
+      deleteModalShowing = false;
+    } else {
+      $modalBackground.className = 'modal-background';
+      deleteModalShowing = true;
+    }
+  }
+
+  // cancel and confirm button functions
+  var $cancelButton = document.querySelector('.cancel-button');
+  var $confirmButton = document.querySelector('.confirm-button');
+
+  $cancelButton.addEventListener('click', showModal);
+  $confirmButton.addEventListener('click', confirmButton);
+
+  function confirmButton(event) {
+    for (var i = 0; i < allEntries.length; i++) {
+      if (data.editing === allEntries[i].getAttribute('data-entry-id')) {
+        var $currentLi = allEntries[i];
+        $currentLi.remove();
+      }
+    }
+
+    for (var j = 0; j < data.entries.length; j++) {
+      if (data.editing === data.entries[j].entryId.toString()) {
+        data.entries.splice(j, 1);
+      }
+    }
+    showModal(event);
+    switchPage(event);
   }
 }
