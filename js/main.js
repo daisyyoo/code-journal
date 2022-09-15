@@ -175,4 +175,30 @@ function showEntryForm(event) {
       $previewPhoto.setAttribute('src', $imageContent.getAttribute('src'));
     }
   }
+
+  var $deleteButtonRow = document.querySelector('.form-actions');
+  var $deleteModalButton = document.createElement('button');
+  $deleteButtonRow.prepend($deleteModalButton);
+  $deleteModalButton.setAttribute('type', 'button');
+  $deleteModalButton.setAttribute('class', 'modal');
+  $deleteModalButton.textContent = 'Delete Entry';
+  $deleteButtonRow.setAttribute('class', 'form-actions-edit column-full');
+
+  $deleteModalButton.addEventListener('mouseover', mouseoverModal);
+  $deleteModalButton.addEventListener('mouseout', mouseoutModal);
+
+  function mouseoverModal(event) {
+    $deleteModalButton.className = 'modal-hovered';
+  }
+
+  function mouseoutModal(event) {
+    $deleteModalButton.className = 'modal';
+  }
+
+  $deleteModalButton.addEventListener('click', deleteModal);
+
+  function deleteModal(event) {
+
+  }
+
 }
