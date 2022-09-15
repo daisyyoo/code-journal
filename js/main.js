@@ -74,20 +74,19 @@ $newEntryButton.addEventListener('click', switchPage);
 
 function switchPage(event) {
   for (var i = 0; i < $viewElements.length; i++) {
-    var dataView = $viewElements[i].getAttribute('data-view');
-    if (dataView === $viewElements[i].getAttribute('data-view')) {
-      $viewElements[i].className = 'view';
-    } else {
-      $viewElements[i].className = 'view hidden';
-    }
-  }
-  currentView(event);
-}
-
-function currentView(event) {
-  for (var i = 0; i < $viewElements.length; i++) {
     if ($viewElements[i].className === 'view') {
       data.view = $viewElements[i].getAttribute('data-view');
+    }
+  }
+  whichPage(data.view);
+}
+
+function whichPage(name) {
+  for (var i = 0; i < $viewElements.length; i++) {
+    if (data.view === $viewElements[i].getAttribute('data-view')) {
+      $viewElements[i].className = 'view hidden';
+    } else if (data.view !== $viewElements[i].getAttribute('data-view')) {
+      $viewElements[i].className = 'view';
     }
   }
 }
@@ -95,7 +94,7 @@ function currentView(event) {
 function refreshPage(event) {
   for (var i = 0; i < $viewElements.length; i++) {
     if (data.view === $viewElements[i].getAttribute('data-view')) {
-      $viewElements[i].className = 'view ';
+      $viewElements[i].className = 'view';
     } else if (data.view !== $viewElements[i].getAttribute('data-view')) {
       $viewElements[i].className = 'view hidden';
     }
