@@ -50,8 +50,7 @@ function newEntry(event) {
     }
 
     for (var j = 0; j < data.entries.length; j++) {
-      if (data.editing === data.entries[i].entryId) {
-        // wondering if this isn't working because data.editing is a string and entryId is a number
+      if (data.editing === data.entries[j].entryId.toString()) {
         data.entries.splice(j, 1, editedEntryObject);
       }
     }
